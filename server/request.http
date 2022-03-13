@@ -1,0 +1,24 @@
+###
+
+POST http://localhost:5000/card
+content-type: application/json
+
+{
+    "tile": "sample", 
+}
+
+###
+
+GET http://localhost:5000/
+
+###
+//delete all doc of collection card
+DELETE  http://localhost:5000/card/delete-all
+
+###
+// send email to ledangtuankhoi
+POST  http://localhost:5000/card/notifications
+
+###
+# send email
+GET http://localhost:5000/card 

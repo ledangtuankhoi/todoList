@@ -1,0 +1,49 @@
+<link rel="stylesheet" href="css/home.css" />
+
+<div id="myDIV" class="header">
+  <h2>My To Do List</h2>
+  <input type="text" id="myInput" placeholder="Title..." />
+  <input type="datetime-local" id="startTime" placeholder="Start time..." />
+  <input type="datetime-local" id="endTime" placeholder="End time..." />
+  <span onclick="newElement()" class="addBtn">Add</span>
+</div>
+
+<form action="/card" method="post" name="createCardToDbForm" hidden></form>
+
+
+{{!-- <ul id="myUL">
+  <li>Hit the gym</li>
+  <li class="checked">Pay bills</li>
+  <li>Meet George</li>
+  <li>Buy eggs</li>
+  <li>Read a book</li>
+  <li>Organize office</li>
+</ul> --}}
+ 
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">body</th>
+      <th scope="col">startTime</th>
+      <th scope="col">startDate</th>
+      <th scope="col">endTime</th>
+      <th scope="col">endDate</th>
+    </tr>
+  </thead>
+  <tbody id="myUL">
+    
+    {{#each cards}}
+      <tr>
+        <td></td>
+        <td> {{this.body}} </td>
+        <td>{{formaTime this.startDate}}</td>
+        <td>{{formaTime this.endDate}}</td>
+        <td>{{formatDate this.startDate}}</td>
+        <td>{{formatDate this.endDate}}</td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+<script src="js/home.js"></script>
