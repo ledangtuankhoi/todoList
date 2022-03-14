@@ -11,11 +11,13 @@ module.exports = {
      * selete [startDate,body] form datebase collection cards
      * sort startDate type asc
      */
-    await Card.find({}, "startDate body")
+    await Card.find({}, "startDate body repeat")
       .sort({ startDate: "asc" })
       .then((cards) => {
         var listTimeNotifiCard = [];
-        var listBodyNotifiCard = []; 
+        var listBodyNotifiCard = [];
+
+        return console.log(cards);
 
         //tạo mảng lưu thời gian thông báo, message của lời nhắc
         cards.forEach((card, index) => {
@@ -25,7 +27,9 @@ module.exports = {
               "datetime bigger time now: " +
                 this.splitDatatimeToDate(card["startDate"])
             );
-            listTimeNotifiCard.push(this.splitDatatimeToDate(card["startDate"]));
+            listTimeNotifiCard.push(
+              this.splitDatatimeToDate(card["startDate"])
+            );
           }
           listBodyNotifiCard.push(card["body"]);
         });
@@ -68,35 +72,35 @@ module.exports = {
     ];
     return array;
   },
-  
- sendEmail: function(time, tileFrom, subject) {
-  console.log(time);
-  console.log(tileFrom);
-  console.log(subject);
 
-  // Generate test SMTP service account from ethereal.email
-  // Only needed if you don't have a real mail account for testing
-  let testAccount = nodemailer.createTestAccount();
+  sendEmail: function (time, tileFrom, subject) {
+    console.log(time);
+    console.log(tileFrom);
+    console.log(subject);
 
-  // create reusable transporter object using the default SMTP transport
-  let transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 587,
-    secure: false, // t rue for 465, false for other ports
-    auth: {
-      user: "ledangtuankhoi2@gmail.com", // generated ethereal user
-      pass: "tuan khoi", // generated ethereal password
-    },
-  });
+    // Generate test SMTP service account from ethereal.email
+    // Only needed if you don't have a real mail account for testing
+    let testAccount = nodemailer.createTestAccount();
 
-  // send mail with defined transport object
-  try {
-    let info = transporter.sendMail({
-      from: `"${time} - ${tileFrom}" ledangtuankhoi2@gmail.com`, // sender address
-      to: "ledangtuankhoi@gmail.com", // list of receivers
-      subject: `${subject}`, // Subject line
-      text: "Hello world?", // plain text body
-      html: `<table class="table">
+    // create reusable transporter object using the default SMTP transport
+    let transporter = nodemailer.createTransport({
+      host: "smtp.gmail.com",
+      port: 587,
+      secure: false, // t rue for 465, false for other ports
+      auth: {
+        user: "ledangtuankhoi2@gmail.com", // generated ethereal user
+        pass: "tuan khoi", // generated ethereal password
+      },
+    });
+
+    // send mail with defined transport object
+    try {
+      let info = transporter.sendMail({
+        from: `"${time} - ${tileFrom}" ledangtuankhoi2@gmail.com`, // sender address
+        to: "ledangtuankhoi@gmail.com", // list of receivers
+        subject: `${subject}`, // Subject line
+        text: "Hello world?", // plain text body
+        html: `<table class="table">
         <thead>
           <tr>
             <th scope="col">#</th>
@@ -135,12 +139,12 @@ module.exports = {
             </tr>
         </tbody>
       </table>`, // html body
-    });
-  } catch (error) {
-    console.log(error);
-  }
-  console.log("send email successful");
-}
- 
-};
+      });
+    } catch (error) {
+      console.log(error);
+    }
+    console.log("send email successful");
+  },
 
+  
+};

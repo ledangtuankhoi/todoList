@@ -6,6 +6,11 @@ const Card = new Schema({
   body: String, 
   startDate: Date,
   endDate: Date, 
+  repeat: {
+    day: {type: Boolean, default: false},
+    week: {type: Boolean, default: false},
+    month: {type: Boolean, default: false},
+  }
 },{
     timestamps: true
 });

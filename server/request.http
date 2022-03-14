@@ -22,3 +22,43 @@ POST  http://localhost:5000/card/notifications
 ###
 # send email
 GET http://localhost:5000/card 
+
+
+###
+# create test
+POST http://localhost:5000/card/createtest 
+content-type: application/json
+
+{
+    "title": "sample",
+    "body": "body sample",
+    "endTime": "2005-05-03T13:04",
+    "startTime": "1973-03-06T11:24",
+    "repeat": {
+        "day": true,
+        "week": true,
+        "month": true
+    }
+}
+
+
+
+###
+# create 
+POST http://localhost:5000/card/ 
+content-type: application/json
+
+{
+    "title": "sample",
+    "body": "body sample",
+    "endTime": "2005-05-03T13:04",
+    "startTime": "1973-03-06T11:24",
+    "repeated": {
+        "day": true,
+        "week": true,
+        "month": true
+    }
+}
+
+
+

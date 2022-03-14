@@ -7,11 +7,15 @@ const bodyParser = require("body-parser");
 const helper = require("./app/helper/handlebars");
 const notification = require("./app/notifications/toEmail");
 const Card = require("./models/card");
+const repeatDate = require("./app/functions/repeatDate")
 
 require("dotenv").config();
 
 const app = express();
 const PORT = 5000;
+
+
+ repeatDate.repeatMonth('03/10/2022','05/15/2022');
 
 // notification to email
 notification.notificationToEmail();
