@@ -1,29 +1,37 @@
 module.exports = {
+    // lặp thứ qua từng tuần
+    // @return list date when repeat for weekly
   repeatWeekly: function (startDate, endDate) {
+    // tái sự dụng func repeatDay thêm vào thuộc tính true cho booleanRepeatWeekly
+    // vì lặp ngày khác với lặp hằng ngày chỉ là 7 ngày và 1 ngày
     this.repeatDay(startDate, endDate, true);
     return;
   },
+    //   lặp hằng ngày
+    // @return list date when repeat for day
   repeatDay: function (startDate, endDate, booleanRepeatWeekly) {
-    var daysOfYear = [];
+    var daysOf = [];
     var dayStep = 1;
-
-    stardate = new Date(startDate).toLocaleString("en");
-    endDate = new Date(endDate).toLocaleString();
-
+    
+    //check null startDate, endDate
+    // @return message and beak
     if (!startDate || !endDate) {
       return console.log("missing start date or end date");
     }
 
+    // thuộc tính dành cho tính lặp theo tuần
     if (booleanRepeatWeekly) {
       dayStep = 7;
     }
 
+    // xác định các ngày lặp theo quy định
+    // lưu vào dayOf
     for (
       var d = new Date(startDate);
       d < new Date(endDate);
       d.setDate(d.getDate() + dayStep)
     ) {
-      daysOfYear.push(new Date(d).toLocaleString());
+      daysOf.push(new Date(d).toLocaleString());
     } 
   },
   repeatMonth: function (startDate, endDate) {

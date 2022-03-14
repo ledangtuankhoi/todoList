@@ -36,8 +36,8 @@ content-type: application/json
     "startTime": "1973-03-06T11:24",
     "repeat": {
         "day": true,
-        "week": true,
-        "month": true
+        "week": false,
+        "month": false
     }
 }
 
