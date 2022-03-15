@@ -10,7 +10,7 @@ class HomeController {
     }
   }
 
-  async create(req, res, next) {
+  async create(req, res, next) {  
     try {
       if (!req.body) {
         return res.sendStatus(403);
@@ -25,10 +25,9 @@ class HomeController {
       }
       const card = new Card({
         title: req.body.title,
-
         body: req.body.body,
-        startDate: startTime,
-        endDate: endTime,
+        startTime: startTime,
+        endTime: endTime,
       });
       await card.save();
       res.redirect("back");
@@ -43,21 +42,18 @@ class HomeController {
       await Card.deleteMany({});
       res.json({ success: "true", message: "DELETE ALL" });
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   }
 
-  async createTest(req, res, next) {
-    console.log(req.body);
-    console.log(req.body.repeat);
-    console.log(req.body.repeat.day);
+  async createTest(req, res, next) { 
     try {
       if (!req.body) {
         return res.sendStatus(403);
       }
 
       let startTime = new Date(req.body.startTime).toLocaleString();
-      let endTime = new Date(req.body.endTime).toLocaleString();
+      let endTime = new Date(req.body.endTime).toLocaleString(); 
 
       if (!startTime || !endTime) {
         startTime = null;
@@ -66,8 +62,8 @@ class HomeController {
       const card = new Card({
         title: req.body.title,
         body: req.body.body,
-        startDate: startTime,
-        endDate: endTime,
+        startTime: startTime,
+        endTime: endTime, 
         repeat: {
           day: req.body.repeat.day,
           week: req.body.repeat.week,
@@ -78,7 +74,7 @@ class HomeController {
       res.redirect("back");
       console.log({ success: "true", message: "created" });
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   }
 }

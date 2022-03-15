@@ -15,15 +15,16 @@ const app = express();
 const PORT = 5000;
 
 
- repeatDate.repeatMonth('03/10/2022','05/15/2022');
-
+ 
 // notification to email
 notification.notificationToEmail();
 
 // To listen for changes to your MongoDB collection, set up a Mongoose Model.watch.
- Card.watch().on("change", (change) => { 
+ Card.watch().on("change", () => { 
   // notification to email
   notification.notificationToEmail();
+  console.log("To listen for changes to your MongoDB collection, set up a Mongoose Model.watch.");
+  
 });
 
 //morgan

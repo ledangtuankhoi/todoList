@@ -32,8 +32,8 @@ content-type: application/json
 {
     "title": "sample",
     "body": "body sample",
-    "endTime": "2005-05-03T13:04",
-    "startTime": "1973-03-06T11:24",
+    "endTime": "2022-04-20",
+    "startTime": "2022-03-20T11:24", 
     "repeat": {
         "day": true,
         "week": false,

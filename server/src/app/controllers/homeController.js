@@ -6,6 +6,7 @@ class HomeController {
     const cards = Card.find({})
       .then((cards) => {
         cards = cards.map((card) => card.toObject());
+        // return console.log(cards);;
         // res.json({cards});
         res.render("home", {
           cards: cards,

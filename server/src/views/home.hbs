@@ -27,8 +27,8 @@
       <th scope="col">#</th>
       <th scope="col">body</th>
       <th scope="col">startTime</th>
-      <th scope="col">startDate</th>
       <th scope="col">endTime</th>
+      <th scope="col">startDate</th>
       <th scope="col">endDate</th>
     </tr>
   </thead>
@@ -38,10 +38,10 @@
       <tr>
         <td></td>
         <td> {{this.body}} </td>
-        <td>{{formaTime this.startDate}}</td>
-        <td>{{formaTime this.endDate}}</td>
-        <td>{{formatDate this.startDate}}</td>
-        <td>{{formatDate this.endDate}}</td>
+        <td>{{formaTime this.startTime}}</td>
+        <td>{{formaTime this.endTime}}</td>
+        <td>{{formatDate this.startTime}}</td> 
+        <td>{{formatDate this.endTime}}</td>
       </tr>
     {{/each}}
   </tbody>

@@ -4,8 +4,8 @@ const Schema = mongoose.Schema;
 const Card = new Schema({ 
   title: String,
   body: String, 
-  startDate: Date,
-  endDate: Date, 
+  startTime: Date,
+  endTime: Date,  
   repeat: {
     day: {type: Boolean, default: false},
     week: {type: Boolean, default: false},
